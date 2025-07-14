@@ -1,0 +1,5 @@
+<svg class="background">
+  <image id="img" />
+  <text id="myTime" />
+  <text id="myDate" />
+</svg>

@@ -1,0 +1,30 @@
+{
+  "name": "fitbit-clock-photograph",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@fitbit/sdk": "~6.2.0-pre.1",
+    "@fitbit/sdk-cli": "~1.8.0-pre.10",
+    "fitbit-sdk-types": "^8.0.3"
+  },
+  "fitbit": {
+    "appUUID": "2914a2ef-24ad-4310-862f-e6bd2b58a24d",
+    "appType": "clockface",
+    "appDisplayName": "Fitbit Clock Photograph",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#ffffff",
+    "requestedPermissions": [],
+    "buildTargets": [
+      "hera",
+      "rhea",
+      "vulcan"
+    ],
+    "i18n": {},
+    "defaultLanguage": "en-US"
+  },
+  "scripts": {
+    "build": "fitbit-build",
+    "debug": "fitbit"
+  }
+}
