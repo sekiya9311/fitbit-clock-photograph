@@ -4,9 +4,11 @@
   "private": true,
   "license": "Apache-2.0",
   "devDependencies": {
+    "@biomejs/biome": "^2.1.1",
     "@fitbit/sdk": "~6.2.0-pre.1",
     "@fitbit/sdk-cli": "~1.8.0-pre.10",
-    "fitbit-sdk-types": "^8.0.3"
+    "fitbit-sdk-types": "^8.0.3",
+    "oxlint": "^1.6.0"
   },
   "fitbit": {
     "appUUID": "2914a2ef-24ad-4310-862f-e6bd2b58a24d",
@@ -25,6 +27,11 @@
   },
   "scripts": {
     "build": "fitbit-build",
-    "debug": "fitbit"
+    "debug": "fitbit",
+    "lint": "oxlint",
+    "lint:run": "oxlint --fix",
+    "format": "biome format .",
+    "format:run": "biome format --write ."
   }
 }
+
