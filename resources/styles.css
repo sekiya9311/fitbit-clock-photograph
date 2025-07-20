@@ -6,17 +6,3 @@ text {
   fill: white;
   text-length: 336;
 }
-
-#myDate {
-  font-size: 30;
-  y: 88%;
-  text-anchor: start;
-  x: 7%;
-}
-
-#myTime {
-  font-size: 80;
-  y: 80%;
-  text-anchor: start;
-  x: 5%;
-}

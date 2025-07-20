@@ -1,44 +1,32 @@
 import clock from 'clock';
 import document from 'document';
 import { preferences } from 'user-settings';
-
-const MONTH_SHORT_NAMES = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
-
-function zeroPad(i: number) {
-  if (i < 10) {
-    return `0${i}`;
-  }
-  return i;
-}
+import { ElementStyle, IMAGES } from '../utils/IMAGES';
+import { MONTH_SHORT_NAMES } from '../utils/MONTH_SHORT_NAMES';
+import { zeroPad } from '../utils/zeroPad';
 
 clock.granularity = 'minutes';
 
-const myDate = document.getElementById('myDate');
-const myTime = document.getElementById('myTime');
+const img = document.getElementById('img') as ImageElement;
+const myDate = document.getElementById('myDate') as TextElement;
+const myTime = document.getElementById('myTime') as TextElement;
 
-let oldDate: Date | null = null;
-clock.ontick = (ev) => {
-  const current = ev.date;
-  if (current !== oldDate) {
-    oldDate = current;
-    changeImage();
-  }
-  changeDate(current);
-  changeTime(current);
-};
+{
+  let oldDate: Date | null = null;
+  clock.addEventListener('tick', (ev) => {
+    const current = ev.date;
+    if (current !== oldDate) {
+      oldDate = current;
+      changeImage();
+    }
+    changeDate(current);
+    changeTime(current);
+  });
+}
+
+img.addEventListener('click', () => {
+  changeImage();
+});
 
 function changeTime(current: Date) {
   let hours: number | string = current.getHours();
@@ -61,9 +49,26 @@ function changeDate(current: Date) {
   }
 }
 
-const IMG_COUNT = 1;
+let prevSelectedIndex: number | null = null;
 function changeImage() {
-  const img = document.getElementById('img') as ImageElement;
-  const imgIdx = Math.floor(IMG_COUNT * Math.random() + 1);
-  img.href = `images/image${zeroPad(imgIdx)}.png`;
+  let curImgIdx: number = -1;
+  if (prevSelectedIndex === null) {
+    curImgIdx = Math.floor(IMAGES.length * Math.random());
+  } else {
+    curImgIdx = (prevSelectedIndex + 1) % IMAGES.length;
+  }
+  prevSelectedIndex = curImgIdx;
+  const cur = IMAGES[curImgIdx];
+  img.href = cur.href;
+
+  applyStyle(myDate, cur.date);
+  applyStyle(myTime, cur.time);
+}
+
+function applyStyle(elem: TextElement, style: ElementStyle) {
+  const SENSE2_DISPLAY_SIZE = 336;
+  elem.style.fontSize = style.fontSize;
+  elem.textAnchor = style.textAnchor;
+  elem.x = style.x * SENSE2_DISPLAY_SIZE;
+  elem.y = style.y * SENSE2_DISPLAY_SIZE;
 }
