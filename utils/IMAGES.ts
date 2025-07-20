@@ -14,7 +14,7 @@ export const IMAGES: ReadonlyArray<Image> = [
   {
     href: `images/image01.png`,
     date: {
-      fontSize: 336 * 30,
+      fontSize: 30,
       textAnchor: 'start',
       x: 0.07,
       y: 0.88,

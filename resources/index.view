@@ -1,5 +1,5 @@
 <svg class="background">
   <image id="img" pointer-events="visible" />
-  <text id="myTime" font-size="80" text-anchor="start" x="5%" y="80%" />
-  <text id="myDate" font-size="30" text-anchor="start" x="7%" y="88%" />
+  <text id="myTime" />
+  <text id="myDate" />
 </svg>
