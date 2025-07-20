@@ -1,8 +1,8 @@
-registerSettingsPage(({ settings }) => (
+registerSettingsPage(() => (
   <Page>
     <Section
       title={
-        <Text bold align="center">
+        <Text bold align='center'>
           App Settings
         </Text>
       }

@@ -34,4 +34,3 @@
     "format:run": "biome format --write ."
   }
 }
-
